@@ -1,0 +1,58 @@
+<form [formGroup]="form" (ngSubmit)="agregarPersona()">
+  <div class="container mt-5">
+    <div class="row">
+      <div class="input-group">
+          <div class="form-group">
+              <label for="cedula">Cedula:</label>
+              <input type="text" formControlName="cedula" class="form-control form-control-lf" id="cedula" placeholder="Ingrese cedula">
+              <div class="row">
+                <div class="col">
+                  <label for="nombre">Nombre:</label>
+                  <input type="text" formControlName="nombre" class="form-control form-control-lf" id="nombre" placeholder="Ingrese nombre">
+                  </div>           
+                <div class="col">
+                <label for="apellido">Apellido:</label>
+                <input type="text" formControlName="apellido" class="form-control form-control-lf" id="apellido" placeholder="Ingrese apellido">
+                </div>
+                
+                  <div class="col">
+                    <label for="fecha">Fecha</label>
+                    <input type="date" formControlName="fecha" class="form-control form-control-lf" id="fecha">
+                  </div>
+              </div>
+             
+              <button type="submit" class="btn btn-primary">Agregar</button>
+
+          </div>
+      </div>
+  </div>
+  </div> 
+
+</form>
+        <div class="col-lg-6 offset-lg-3 mt-3">
+            <div *ngIf="listPersona.length===0" class="card p-2">
+                <h6>No hay Personas registradas</h6>
+            </div>
+            <table class="table bg-light ">
+                <thead>
+                  <tr>
+                    <th>Cédula</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Fecha de nacimiento</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let Persona of listPersona let i=index">
+                    <td>{{ Persona.cedula }}</td>
+                    <td>{{ Persona.nombre }}</td>
+                    <td>{{ Persona.apellido }}</td>
+                    <td>{{ Persona.fecha }}</td>                       
+                    <span class="cursor text-primary" (click)="eliminarPersona(i)">
+                        <i class="bi bi-trash3-fill"></i>
+                    </span>
+                  </tr>                  
+                </tbody>
+             </table>          
+            </div>                                     
+            
