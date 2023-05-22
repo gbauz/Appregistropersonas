@@ -8,15 +8,15 @@ import { FormGroup,FormBuilder } from '@angular/forms';
   styleUrls: ['./cuerpo.component.css']
 })
 export class CuerpoComponent {
-  
+  Id: number = 1;
   constructor(private formBuilder: FormBuilder) {
-    this.form = this.formBuilder.group({
+    this.form = this.formBuilder.group({     
       cedula: [''],
       nombre: [''],
       apellido: [''],
       fecha:['']
       })
-    };
+    };  
   cedula = "";
   nombre = "";
   apellido = "";
@@ -28,26 +28,19 @@ export class CuerpoComponent {
   }
   agregarPersona():void {
     const persona: Persona = {
+      Id: this.Id++,
       cedula: this.form.value.cedula,
       nombre:this.form.value.nombre,
       apellido:this.form.value.apellido,
       fecha:this.form.value.fecha,
       
     }
+ 
     this.form.reset();
-
     this.listPersona.push(persona);
-
     this.cedula='';
     this.nombre='';
     this.apellido='';
     this.fecha='';
-  }
-
-  eliminarPersona(indice:number):void{
-    this.listPersona.splice(indice,1);
-
-  }
-
- 
+  } 
 }

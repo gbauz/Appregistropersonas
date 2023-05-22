@@ -1,4 +1,5 @@
 export class Persona {
+    Id: number = 1;
     cedula: string;
     nombre:String;
     apellido:String;
